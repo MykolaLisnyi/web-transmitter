@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS pets;
+ 
+CREATE TABLE pets (
+	pet_id INT NOT NULL PRIMARY KEY,
+		category_id INT DEFAULT 0,
+		category_name VARCHAR(100) DEFAULT '',
+    pet_name VARCHAR(100) DEFAULT '',
+    pet_photoUrls VARCHAR(1000) DEFAULT '',
+		tag_id INT NOT NULL DEFAULT 0,
+		tag_name VARCHAR(100) DEFAULT '',
+    pet_status VARCHAR(20) DEFAULT ''
+);
+
+INSERT INTO pets VALUES (667, 10, 'dog', 'Kashalot', 'No photo', 0, '', 'avaliable');
+INSERT INTO pets VALUES (10, 3, 'mouse', 'Micky', 'No photo', 0, '', 'avaliable');
+INSERT INTO pets VALUES (100, 1, 'cat', 'Meow', 'No photo', 0, '', 'avaliable');
+INSERT INTO pets VALUES (1000, 5, 'bird', 'Chirck', 'No photo', 0, '', 'avaliable');
+INSERT INTO pets VALUES (2, 11, 'bat', 'F1', 'No photo', 0, '', 'avaliable');
+
+SELECT * FROM pets

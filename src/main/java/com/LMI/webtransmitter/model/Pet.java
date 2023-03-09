@@ -53,18 +53,22 @@ public class Pet {
 
     public static class Builder {
         private Integer buildId;
-        private Category buildCategory;
+        private Integer buildCategoryId;
+        private String buildCategoryName;
         private String buildName;
-        private List<String> buildPhotoUrls;
-        private List<Tag> buildTags;
+        private String buildPhotoUrls;
+        private Integer buildTagsId;
+        private String buildTagsName;
         private String buildStatus;
 
         public Builder() {
             buildId = 1;
-            buildCategory = new Category(0, "string");
+            buildCategoryId = 0;
+            buildCategoryName = "string";
             buildName = "unknown";
-            buildPhotoUrls = List.of("\"string\"");
-            buildTags = List.of(new Tag(0, "string"));
+            buildPhotoUrls = "No photo";
+            buildTagsId = 0;
+            buildTagsName = "";
             buildStatus = "available";
         }
 
@@ -73,13 +77,48 @@ public class Pet {
             return this;
         }
 
+        public Builder withCategoryId(Integer categoryId) {
+            buildCategoryId = categoryId;
+            return this;
+        }
+
+        public Builder withCategoryName(String categoryName) {
+            buildCategoryName = categoryName;
+            return this;
+        }
+
         public Builder withName(String name) {
             buildName = name;
             return this;
         }
 
+        public Builder withPhotoUrls(String photoUrls) {
+            buildPhotoUrls = photoUrls;
+            return this;
+        }
+
+        public Builder withTagsId(Integer tagsId) {
+            buildTagsId = tagsId;
+            return this;
+        }
+
+        public Builder withTagsName(String tagsName) {
+            buildTagsName = tagsName;
+            return this;
+        }
+
+        public Builder withStatus(String status) {
+            buildStatus = status;
+            return this;
+        }
+
         public Pet build() {
-            return new Pet(buildId, buildCategory, buildName, buildPhotoUrls, buildTags, buildStatus);
+            return new Pet(buildId,
+                    new Category(buildCategoryId, buildCategoryName),
+                    buildName,
+                    List.of(buildPhotoUrls),
+                    List.of(new Tag(buildTagsId, buildTagsName)),
+                    buildStatus);
         }
     }
 
